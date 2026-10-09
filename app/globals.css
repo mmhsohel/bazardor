@@ -4,7 +4,7 @@
 
 body {
     font-family: "Hind Siliguri", system-ui, sans-serif;
-    background: #f8faf7
+    background: #f0f5f0
 }
 
 @keyframes marquee {
@@ -20,7 +20,7 @@ body {
 .marquee {
     display: flex;
     width: max-content;
-    animation: marquee 200s linear infinite
+    animation: marquee 120s linear infinite
 }
 
 .marquee:hover {
