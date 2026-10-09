@@ -49,7 +49,6 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero section */}
       <section className="my-10 grid grid-cols-1 items-center gap-8 rounded-2xl bg-[#fafcfa] p-6 sm:p-8 md:grid-cols-2 lg:gap-12">
         <div className="order-2 md:order-1">
           <div
@@ -93,14 +92,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Error message */}
       {error && (
         <p className="text-red-600">
           ডেটা লোড করা যায়নি।
         </p>
       )}
 
-      {/* Price increases */}
       <section className="mt-10">
         <h2 className="text-2xl font-bold">
           আজ দাম বেড়েছে ▲
@@ -115,7 +112,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Price decreases */}
       <section className="mt-10">
         <h2 className="text-2xl font-bold">
           আজ দাম কমেছে ▼

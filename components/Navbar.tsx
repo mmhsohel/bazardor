@@ -9,7 +9,20 @@ export default function Navbar() {
   const path = usePathname(); const router = useRouter();
   const { data: session } = useSession();
   const { data } = useProducts();
-  const cats = Array.from(new Set((data || []).map(p => p.category)));
+  const cats = Array.from(
+    new Map(
+      (data || []).map((p) => [
+        p.category,
+        {
+          category: p.category,
+          categorySlug: p.categorySlug,
+          categoryName: p.categoryName,
+          categoryIcon: p.categoryIcon,
+        },
+      ])
+    ).values()
+  );
+  console.log(cats)
   const logout = async () => { await signOut({}); toast.success("সাইন আউট সফল হয়েছে"); router.push("/"); };
   return (
     <header className="bg-white border-b sticky top-0 z-30">
@@ -27,9 +40,9 @@ export default function Navbar() {
       </div>
       <nav className="max-w-6xl mx-auto px-4 pb-2 flex gap-2 overflow-x-auto">
         <Link href="/" className={`btn btn-sm ${path === "/" ? "btn-success text-white" : "btn-ghost"}`}>হোম</Link>
-        {cats.map(c => {
-          const href = `/category/${encodeURIComponent(c)}`;
-          return <Link key={c} href={href} className={`btn btn-sm whitespace-nowrap ${decodeURIComponent(path) === `/category/${c}` ? "btn-success text-white" : "btn-ghost"}`}>{c}</Link>;
+        {cats.map(p => {
+          const href = `/category/${encodeURIComponent(p.category)}`;
+          return <Link key={p.category} href={href} className={`btn btn-sm whitespace-nowrap ${decodeURIComponent(path) === `/category/${p.category}` ? "btn-success text-white" : "btn-ghost"}`}><span>{p.categoryIcon} {p.category}</span></Link>;
         })}
       </nav>
       {data && data.length > 0 && (
