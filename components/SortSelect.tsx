@@ -1,9 +1,25 @@
+
 "use client";
-import { Sort } from "@/lib/api";
-export default function SortSelect({ value, onChange }: { value: Sort; onChange: (s: Sort) => void }) {
+
+import type { Sort } from "@/lib/api";
+
+export default function SortSelect({
+  value,
+  onChange,
+}: {
+  value: Sort;
+  onChange: (sort: Sort) => void;
+}) {
   return (
-    <label className="flex items-center gap-2 text-sm">সাজান:
-      <select className="select select-bordered select-sm sm:select-md" value={value} onChange={e => onChange(e.target.value as Sort)}>
+    <label className="flex items-center gap-2 text-sm">
+      <span>সাজান:</span>
+
+      <select
+        name="product-sort"
+        value={value}
+        onChange={(e) => onChange(e.target.value as Sort)}
+        className="select select-bordered select-sm sm:select-md"
+      >
         <option value="default">ডিফল্ট</option>
         <option value="asc">দাম: কম থেকে বেশি</option>
         <option value="desc">দাম: বেশি থেকে কম</option>
@@ -11,3 +27,4 @@ export default function SortSelect({ value, onChange }: { value: Sort; onChange:
     </label>
   );
 }
+

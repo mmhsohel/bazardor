@@ -6,6 +6,7 @@ export function Badge({ c }: { c: number }) {
   return <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${cls}`}>{t}</span>;
 }
 export default function ProductCard({ p }: { p: Product }) {
+
   return (
     <Link href={`/product/${p.slug}`} className="card bg-white border hover:shadow-md transition">
       <div className="card-body p-4 gap-1">
@@ -13,7 +14,13 @@ export default function ProductCard({ p }: { p: Product }) {
         <h3 className="font-bold text-lg">{p.name}</h3>
         <p className="text-sm text-gray-500">{p.unit}</p>
         <div className="flex items-center justify-between mt-2">
-          <div><p className="text-xs text-gray-500">আজকের দাম</p><p className="font-bold text-red-600">{fmtPrice(p.price)} টাকা</p></div>
+          <div><p className="text-xs text-gray-500">আজকের দাম</p><p className={
+            p.change > 0
+              ? "text-red-600"
+              : p.change < 0
+                ? "text-green-500"
+                : "text-gray-500"
+          }>{fmtPrice(p.price)} টাকা</p></div>
           <Badge c={p.change} />
         </div>
       </div>
