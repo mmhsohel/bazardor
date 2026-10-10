@@ -4,9 +4,11 @@ export function Badge({ c }: { c: number }) {
   const cls = c > 0 ? "bg-green-100 text-red-700" : c < 0 ? "bg-red-100 text-green-700" : "bg-gray-100 text-gray-600";
   const t = c > 0 ? `▲ ${toBn(c)}%` : c < 0 ? `▼ ${toBn(Math.abs(c))}%` : "—০.০%";
   return <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${cls}`}>{t}</span>;
+
+ 
 }
 export default function ProductCard({ p }: { p: Product }) {
-
+ console.log("all products", p)
   return (
     <Link href={`/product/${p.slug}`} className="card bg-white border hover:shadow-md transition">
       <div className="card-body p-4 gap-1">
