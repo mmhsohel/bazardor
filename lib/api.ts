@@ -53,6 +53,7 @@ export type Product = {
   min: number;
   max: number;
   avg: number;
+  changeDir : string
 };
 
 const UNITS: Record<string, string> = {
@@ -82,6 +83,7 @@ export function normalize(r: any, i: number): Product {
       : r.change?.dir === "down"
         ? -pct
         : 0;
+  const changeDir = r.change.dir
 
   return {
     slug: String(r.slug ?? r.id ?? i),
@@ -93,6 +95,7 @@ export function normalize(r: any, i: number): Product {
     lastWeek: parseNum(r.lastWeek),
     lastMonth: parseNum(r.lastMonth),
     change,
+    changeDir,
     category: r.category,
     categorySlug: r.category,
     categoryName: r.categoryNameBn,
