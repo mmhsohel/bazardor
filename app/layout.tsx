@@ -1,4 +1,3 @@
-// @ts-expect-error CSS imports are handled by Next.js.
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/Navbar";

@@ -100,8 +100,9 @@ export default function Navbar() {
             </div>
             <div>
               <div className="font-extrabold text-md">বাজার দর</div>
-              <div className="text-sm text-gray-400">{bnDate()}</div>
-            </div>
+              <div className="text-[7px] text-gray-400 sm:text-[15px] md:text-base">
+                {bnDate()}
+              </div> </div>
           </div>
         </Link>
 
@@ -118,7 +119,7 @@ export default function Navbar() {
               >
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-500 text-xl text-white font-semibold">
                   {(session as { user: { name: string } }).user.name.charAt(0).toLocaleUpperCase()}
-                </div>  <span className="hidden text-sm sm:inline">
+                </div>  <span className="hidden text-sm sm:inline xs:none">
                   {(session as { user: { name: string } }).user.name}
                 </span>
                 <span className="text-xs">{profileOpen ? "▲" : "▼"}</span>
@@ -140,7 +141,7 @@ export default function Navbar() {
                     </div>
                   </div>
 
-                  
+
                   <Link
                     href="/profile"
                     role="menuitem"
